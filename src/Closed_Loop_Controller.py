@@ -25,9 +25,9 @@ class Controller:
         @param set_point (float): Is the desired setpoint of the system.
         @param start (int): The initial time of when the controller starts.
         """
-         self.kp = float(kp)
-         self.set_point = float(set_point)
-         self.start = utime.ticks_ms()
+        self.kp = float(kp)
+        self.set_point = float(set_point)
+        self.start = utime.ticks_ms()
          
     def run(self, measured_output):
         """!

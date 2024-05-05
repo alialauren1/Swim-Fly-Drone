@@ -1,6 +1,6 @@
 """!
 @file pressure_sensor.py
-    This file is a class that implements pressure sensor.
+    This file is a class that implements Pressure Sensor: SSCMANV030PA2A3 from Honeywell
     It allows for initialization of setpoint (in [psi]), and Pressure and Temperature in units of counts.
     
     This class can:

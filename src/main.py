@@ -8,7 +8,7 @@
     The copyright from the basic_tasks file is included below. 
     
 @author Alia Wolken, Eduardo Santos, Andrew Jwaideh
-@date   2024-March-19
+@date   2024-Sept-24
 
 @copyright (c) 2015-2021 by JR Ridgely and released under the GNU
     Public License, Version 2. 
@@ -40,6 +40,8 @@ def task1_print(shares):
     
     T1_state = 1
     S1_print = 1
+    
+    print('In Task 1')
 
     while True:
         
@@ -63,6 +65,7 @@ def task1_print(shares):
                 T1_state = 1 # Transition back to printing data
             
         yield T1_state
+        print('T1_state')
             
         
 def task2_get(shares):
@@ -78,15 +81,17 @@ def task2_get(shares):
     # get data
     qTime, qPos, share_init_p, share_off = shares[0], shares[1], shares[2], shares[3]
 
-    moe2 = motordriver (pyb.Pin.board.PA10, pyb.Pin.board.PB4, pyb.Pin.board.PB5, 3)
+    moe2 = motordriver (pyb.Pin.board.PB10, pyb.Pin.board.PB4, pyb.Pin.board.PB5, 3) # !!!!!!!!!!!!!! Had to update this 
     
-    setpoint_p = 10 # Setpoint in [psi]
+    setpoint_p = 12 # Setpoint in [psi]
     sensor_obj = PressureSensor(setpoint_p,0,0) # Conversion in PressureSensor class from [psi] to counts
     setpoint_raw = sensor_obj.PtoRawP(setpoint_p) # Setpoint in [counts]
     
     # Paramters for the contoller
     Kp = 2
     controller_obj2 = Controller(Kp, setpoint_raw)
+    
+    print('Task 2')
     
     T2_state = 1
     S1_data = 1
@@ -111,7 +116,7 @@ def task2_get(shares):
             
             # If Desired Pressure is Reached
             if setpoint_raw-6 <= reader_p_value <= setpoint_raw+6: # Allowable range to consider "reaching" setpoint
-                #print('REACHED SETPOINTT!!')
+                print('REACHED SETPOINTT!!')
                 T2_state = 2 
                 key = 1
             
@@ -149,6 +154,7 @@ def task2_get(shares):
             pass
 
         yield T2_state
+        print('T2_state')
 
 # This code creates a share, a queue, and two tasks, then starts the tasks. The
 # tasks run until somebody presses ENTER, at which time the scheduler stops and

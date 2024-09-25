@@ -9,7 +9,7 @@
 """
 
 import pyb
-import utime
+import time
 
 class motordriver:
     """!
@@ -68,11 +68,13 @@ class motordriver:
             
 if __name__ == '__main__':
                
-    moe = motordriver (pyb.Pin.board.PA10, pyb.Pin.board.PB4, pyb.Pin.board.PB5, 3)
-    
-    moe.set_duty_cycle (60)
-    #utime.delay(1)
-    #moe.set_duty_cycle (0)
+   # moe = motordriver (pyb.Pin.board.PC1, pyb.Pin.board.PB4, pyb.Pin.board.PB5, 3)
+    moe = motordriver (pyb.Pin.board.PB10, pyb.Pin.board.PB4, pyb.Pin.board.PB5, 3)
+    while True:    
+        moe.set_duty_cycle (100)
+#         time.sleep(1)
+#         moe.set_duty_cycle (100)
+#         time.sleep(1)
     
     # Wait for a certain duration (e.g., 5 seconds)
     # pyb.delay(5000)  # 5000 milliseconds = 5 seconds

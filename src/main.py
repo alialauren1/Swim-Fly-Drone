@@ -83,7 +83,7 @@ def task2_get(shares):
 
     moe2 = motordriver (pyb.Pin.board.PB10, pyb.Pin.board.PB4, pyb.Pin.board.PB5, 3) # !!!!!!!!!!!!!! Had to update this 
     
-    setpoint_p = 12 # Setpoint in [psi]
+    setpoint_p = 14.3 # Setpoint in [psi]
     sensor_obj = PressureSensor(setpoint_p,0,0) # Conversion in PressureSensor class from [psi] to counts
     setpoint_raw = sensor_obj.PtoRawP(setpoint_p) # Setpoint in [counts]
     
@@ -189,7 +189,7 @@ if __name__ == "__main__":
     # Run the scheduler with the chosen scheduling algorithm. Quit if ^C pressed
     while True:
         try:
-            cotask.task_list.pri_sched()
+            #cotask.task_list.pri_sched() # uncomment if want to run on command
         except KeyboardInterrupt:
             break
 

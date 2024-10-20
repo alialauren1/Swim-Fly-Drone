@@ -66,15 +66,34 @@ class motordriver:
             self.ch2.pulse_width_percent(0)
             #print("negative")
             
+def loop_example():
+    
+    # initialize button and pins needed for it
+    HOT_pin = pyb.Pin(pyb.Pin.board.PB10, pyb.Pin.OUT_PP)
+    LOW_pin = pyb.Pin(pyb.Pin.board.PB10, pyb.Pin.OUT_PP)
+    # HOT_pin.value(1) # make it high???
+    
+    # do while loop where if button high or if flag is high, run motor inside loop
+    
+    # do while loop where while the button is say high, run motor.
+    # button will not be high until pressed
+    
+    print("in test loop")
+    moe.set_duty_cycle(70) # + to close, - to open plunger (as in pull water in)
+    time.sleep(3)
+    moe.set_duty_cycle(0)
+    time.sleep(1)
+            
 if __name__ == '__main__':
                
    # moe = motordriver (pyb.Pin.board.PC1, pyb.Pin.board.PB4, pyb.Pin.board.PB5, 3)
     moe = motordriver (pyb.Pin.board.PB10, pyb.Pin.board.PB4, pyb.Pin.board.PB5, 3)
-    while True:    
-        moe.set_duty_cycle (100)
+    loop_example()
+            
+#     while True:    
+#         moe.set_duty_cycle (50)
 #         time.sleep(1)
-#         moe.set_duty_cycle (100)
-#         time.sleep(1)
+
     
     # Wait for a certain duration (e.g., 5 seconds)
     # pyb.delay(5000)  # 5000 milliseconds = 5 seconds
